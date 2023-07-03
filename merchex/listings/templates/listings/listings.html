@@ -1,0 +1,14 @@
+{% extends 'listings.html' %}
+
+{% block content %}
+
+<h1>Listing</h1>
+<p>Liste des annonces : </p>
+<!-- TODO : liste des groupes -->
+<ul>
+    {% for listing in listings %}
+    <li>{{listing.title}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock  %}
