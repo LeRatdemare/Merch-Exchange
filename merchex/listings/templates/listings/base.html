@@ -1,13 +1,14 @@
-{% load static %}
+
 
 <html>
     <head>
+        {% load static %}
         <link rel="stylesheet" href="{% static 'listings/styles.css' %}">
         <title>Merchex</title>
     </head>
     <body>
-
-        {% block content %}{% endblock %}
-
+        <div id='block_central'>
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>

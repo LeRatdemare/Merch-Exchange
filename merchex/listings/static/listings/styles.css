@@ -1,3 +1,16 @@
-* {
-    background: red
+body {
+    background: linear-gradient(292deg, #865C5C 0%, #fff 97%);
+}
+
+h1 {
+    text-align: center;
+}
+
+#block_central {
+    margin: 3em 13em;
+    padding: 1em 2em;
+
+    box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
 }
