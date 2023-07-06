@@ -50,6 +50,21 @@ def band_create(request):
     return render(request, 'listings/band_create.html', {'form': form})
 
 
+def band_update(request, band_id):
+    band = get_object_or_404(Band, id=band_id)
+
+    if request.method == 'POST':
+        form = BandForm(request.POST, instance=band)
+        if form.is_valid():
+            form.save()
+            print("Yessssssssss")
+            return redirect('band-detail', band.id)
+    else:
+        print("Noooooo")
+        form = BandForm(instance=band)  # On pré-rempli le formulaire
+    return render(request, 'listings/band_update.html', {'form': form, 'band': band})
+
+
 def about(request):
     author = "Nathan Lufuluabo"
     return render(request, 'listings/about.html', context={'author': author})
@@ -74,6 +89,18 @@ def listing_create(request):
     else:
         form = ListingForm()
     return render(request, 'listings/listing_create.html', {'form': form})
+
+
+def listing_update(request, listing_id):
+    listing = get_object_or_404(Listing, id=listing_id)
+    if request.method == 'POST':
+        form = ListingForm(request.POST, instance=listing)
+        if form.is_valid():
+            form.save()
+            return redirect('listing-detail', listing.id)
+    else:
+        form = ListingForm(instance=listing)
+    return render(request, 'listings/listing_update.html', {'form': form, 'listing': listing})
 
 
 def contact(request):

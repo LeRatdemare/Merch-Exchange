@@ -10,7 +10,21 @@ h1 {
     text-align: center;
 }
 
+
+h2 {
+    font-size: 3em;
+    font-style: italic;
+}
+
 /* ------------------------- Classes ------------------------- */
+
+.title-link:link,
+.title-link:visited,
+.title-link:hover {
+    animation: blinky 6000ms ease-in-out 3s infinite normal none;
+    color: black;
+    text-decoration: none;
+}
 
 .errorlist {
     margin-bottom: -10px
@@ -48,4 +62,20 @@ h1 {
     box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
+}
+
+/* ------------------------- ??? ------------------------- */
+
+@keyframes blinky {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

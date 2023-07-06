@@ -15,7 +15,8 @@
 <!-- TODO : liste des groupes -->
 <div class="grid-container">
     {% for band in bands %}
-    <div class="grid-item"><a href="{% url 'band-detail' band.id %}">{{band.name}}</a></div>
+    <div class="grid-item"><a href="{% url 'band-detail' band.id %}">{{band.name}}</a> -
+        <a href="{% url 'band-update' band.id %}">[edit]</a></div>
     {% endfor %}
 </div>
 
