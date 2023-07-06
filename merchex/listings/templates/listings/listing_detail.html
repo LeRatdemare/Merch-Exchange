@@ -14,5 +14,6 @@
 </ul>
 
 <a href="{% url 'listing-update' listing.id %}">Modifier l'annonce</a><br>
+<a href="{% url 'listing-delete' listing.id %}">Supprimer l'annonce</a><br><br>
 <a href="{% url 'listing-list' %}">Retour à la page des groupes</a>
 {% endblock  %}

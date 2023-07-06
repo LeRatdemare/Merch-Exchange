@@ -11,6 +11,13 @@
         <title>Merchex</title>
     </head>
     <body>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <nav id='menu'>
             <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
             <ul>

@@ -7,6 +7,7 @@ from listings.models import Band
 from listings.models import Listing
 from listings.forms import ContactUsForm, BandForm, ListingForm
 from django.core.mail import send_mail
+from django.contrib import messages
 
 
 def band_list(request):
@@ -43,6 +44,8 @@ def band_create(request):
             # band.active = form.cleaned_data['active']
             # band.official_homepage = form.cleaned_data['official_homepage']
             # band.save()
+            messages.success(
+                request, f"Le groupe {band.name} vient d'être ajouté.")
             return redirect('band-detail', band.id)
     else:
         # Cas où c'est la méthode GET
@@ -57,12 +60,22 @@ def band_update(request, band_id):
         form = BandForm(request.POST, instance=band)
         if form.is_valid():
             form.save()
-            print("Yessssssssss")
+            messages.success(
+                request, f"Le groupe {band.name} a été mis à jour.")
             return redirect('band-detail', band.id)
     else:
-        print("Noooooo")
         form = BandForm(instance=band)  # On pré-rempli le formulaire
     return render(request, 'listings/band_update.html', {'form': form, 'band': band})
+
+
+def band_delete(request, band_id):
+    band = get_object_or_404(Band, id=band_id)
+    if request.method == 'POST':
+        band.delete()
+        messages.success(
+            request, f"Le groupe {band.name} a été supprimé.")
+        return redirect('band-list')
+    return render(request, 'listings/band_delete.html', {'band': band})
 
 
 def about(request):
@@ -85,6 +98,8 @@ def listing_create(request):
         form = ListingForm(request.POST)
         if form.is_valid():
             listing = form.save()
+            messages.success(
+                request, f"L'annonce {listing.title} vient d'être ajoutée.")
             return redirect('listing-detail', listing.id)
     else:
         form = ListingForm()
@@ -97,10 +112,22 @@ def listing_update(request, listing_id):
         form = ListingForm(request.POST, instance=listing)
         if form.is_valid():
             form.save()
+            messages.success(
+                request, f"L'annonce {listing.title} vient d'être mise à jour.")
             return redirect('listing-detail', listing.id)
     else:
         form = ListingForm(instance=listing)
     return render(request, 'listings/listing_update.html', {'form': form, 'listing': listing})
+
+
+def listing_delete(request, listing_id):
+    listing = get_object_or_404(Listing, id=listing_id)
+    if request.method == 'POST':
+        listing.delete()
+        messages.success(
+            request, f"L'annonce {listing.title} vient d'être supprimée.")
+        return redirect('listing-list')
+    return render(request, 'listings/listing_delete.html', {'listing': listing})
 
 
 def contact(request):
@@ -115,6 +142,7 @@ def contact(request):
                 from_email=form.cleaned_data['email'],
                 recipient_list=['lufuluabon@outlook.fr']
             )
+            messages.success(request, "Email envoyé avec succès.")
             return redirect('email-sent')
     else:
         # Cas où c'est la méthode GET
