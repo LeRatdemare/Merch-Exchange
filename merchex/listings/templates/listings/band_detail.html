@@ -1,0 +1,31 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+<h2>{{ band.name }}</h2>
+
+<ul>
+    <!-- band.genre étant un TextChoices, on peut récupérer son nom complet de cette manière -->
+    <li>Genre : {{ band.get_genre_display }}</li>
+    <li>Année de formation : {{ band.year_formed }}</li>
+    <li> Le groupe {% if band.active %}est toujours
+                {% else %}n'est plus
+                {% endif %} en activité.</li>
+    <li>{% if band.official_homepage %}<a href='{{ band.official_homepage }}'>Page officielle du site</a>
+        {% else %}Le site n'a pas de page officielle enregistrée.
+        {% endif %}</li>
+    <li>Biographie : {{ band.biography }}</li>
+    <li>Annonces en lien :
+        <ul>
+            <!-- Autre solution :
+                - Ne pas importer listings dans views.py
+                - Ajouter ici :
+                    {% for listing in band.listing_set.all %} -->
+            {% for listing in listings %}
+            <li><a href="{% url 'listing-detail' listing.id %}">{{listing.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+
+<a href="{% url 'band-list' %}">Retour à la page des groupes</a>
+{% endblock  %}

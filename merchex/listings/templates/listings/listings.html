@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h1>Listing</h1>
+<h1>Listings</h1>
 <p>Liste des annonces : </p>
 <!-- TODO : liste des groupes -->
 <ul>
     {% for listing in listings %}
-    <li>{{listing.title}}</li>
+    <li><a href="{% url 'listing-detail' listing.id %}">{{listing.title}}</a></li>
     {% endfor %}
 </ul>
 

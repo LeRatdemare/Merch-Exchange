@@ -7,6 +7,10 @@
         <title>Merchex</title>
     </head>
     <body>
+        <nav>
+            <a href="{% url 'band-list' %}">Groupes</a>
+            <a href="{% url 'listing-list' %}">Listings</a>
+        </nav>
         <div id='block_central'>
             {% block content %}{% endblock %}
         </div>

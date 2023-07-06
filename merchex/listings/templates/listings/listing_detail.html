@@ -1,0 +1,17 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+<h2>{{ listing.title }}</h2>
+
+<ul>
+    {% if listing.band %}<li>Groupe : {{ listing.band }}</li>{% endif %}
+    <li>Année : {{ listing.year }}</li>
+    <li>Catégorie : {{ listing.get_type_display }}</li>
+    <li> L'article {% if listing.sold %}a
+                {% else %}n'a pas encore
+                {% endif %} été vendu.</li>
+    <li>Description : {{ listing.description }}</li>
+</ul>
+
+<a href="{% url 'listing-list' %}">Retour à la page des groupes</a>
+{% endblock  %}
