@@ -5,6 +5,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import get_list_or_404
 from listings.models import Band
 from listings.models import Listing
+from listings.forms import ContactUsForm
+from django.core.mail import send_mail
 
 
 def band_list(request):
@@ -18,7 +20,10 @@ def band_detail(request, band_id):  # id est l'argument passé dans l'URL
     except:
         return redirect('band-list')
 
-    listings = get_list_or_404(Listing, band=band_id)
+    try:
+        listings = get_list_or_404(Listing, band=band_id)
+    except:
+        listings = None
     return render(request, 'listings/band_detail.html', {'band': band, 'listings': listings})
 
 
@@ -38,5 +43,23 @@ def listing_detail(request, listing_id):
 
 
 def contact(request):
-    mail_pro = "nathan.lufuluabo@ensc.fr"
-    return render(request, 'listings/contact.html', context={'mail_pro': mail_pro})
+
+    if request.method == 'POST':
+        # créer une instance de notre formulaire et le remplir avec les données POST
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            send_mail(
+                subject=f"Message from {form.cleaned_data['name'] or 'anonyme'} via MerchEx Contact Us form",
+                message=form.cleaned_data['message'],
+                from_email=form.cleaned_data['email'],
+                recipient_list=['lufuluabon@outlook.fr']
+            )
+            return redirect('email-sent')
+    else:
+        # Cas où c'est la méthode GET
+        form = ContactUsForm()
+    return render(request, 'listings/contact.html', {'form': form})
+
+
+def email_sent(request):
+    return render(request, 'listings/email_sent.html')

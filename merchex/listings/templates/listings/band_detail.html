@@ -14,17 +14,20 @@
         {% else %}Le site n'a pas de page officielle enregistrée.
         {% endif %}</li>
     <li>Biographie : {{ band.biography }}</li>
+    {% if  listings %}
     <li>Annonces en lien :
         <ul>
-            <!-- Autre solution :
+            {% comment %} Autre solution :
                 - Ne pas importer listings dans views.py
                 - Ajouter ici :
-                    {% for listing in band.listing_set.all %} -->
+                    {% for listing in band.listing_set.all %}
+            {% endcomment %}
             {% for listing in listings %}
             <li><a href="{% url 'listing-detail' listing.id %}">{{listing.title}}</a></li>
             {% endfor %}
         </ul>
     </li>
+    {% endif %}
 </ul>
 
 <a href="{% url 'band-list' %}">Retour à la page des groupes</a>

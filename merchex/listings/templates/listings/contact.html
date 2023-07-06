@@ -2,8 +2,13 @@
 
 {% block content %}
 
-<h1>Contact me</h1>
-<p>Voici mon <a href="mailto:{{mail_pro}}">mail pro</a>.
-</p>
+<h1>Contact</h1>
+<p>Nous sommes là pour vous aider.</p>
+<form action="" method="post" novalidate>
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Envoyer">
+</form>
+
 
 {% endblock  %}

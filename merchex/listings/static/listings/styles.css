@@ -1,3 +1,5 @@
+/* ------------------------- Elements ------------------------- */
+
 body {
     background: linear-gradient(292deg, #865C5C 0%, #fff 97%);
 }
@@ -6,6 +8,14 @@ h1 {
     font-size: 20em;
     text-align: center;
 }
+
+/* ------------------------- Classes ------------------------- */
+
+.errorlist {
+    margin-bottom: -10px
+}
+
+/* ------------------------- Ids ------------------------- */
 
 #block_central {
     margin: 3em 13em;
