@@ -5,7 +5,8 @@ body {
 }
 
 h1 {
-    font-size: 20em;
+    font-size: 5em;
+    font-family: 'Indie Flower', cursive;
     text-align: center;
 }
 
@@ -15,11 +16,34 @@ h1 {
     margin-bottom: -10px
 }
 
+.grid-container {
+    /* border: 1px solid #333; */
+    max-width: 1200px;
+    width: 80%;
+    margin: 2em 3em 10em;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    gap: 5%;
+    justify-content: center;
+}
+
+.grid-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 350px;
+    height: 200px;
+
+    text-align: center;
+}
+
+
 /* ------------------------- Ids ------------------------- */
 
 #block_central {
     margin: 3em 13em;
     padding: 1em 2em;
+
+    /* Ajuste la hauteur selon tes besoins */
 
     box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 20px 24px 35px -1px rgba(0, 0, 0, 0.75);

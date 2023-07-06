@@ -3,6 +3,7 @@
 {% block content %}
 
 <h1>Groupes</h1>
+<a href="{% url 'band-create' %}">Ajouter un groupe</a>
 <p>Il y a pour l'instant
     {% if bands|length < 5 %}
     peu de
@@ -12,10 +13,10 @@
     beaucoup de
     {% endif %}groupes :</p>
 <!-- TODO : liste des groupes -->
-<ul>
+<div class="grid-container">
     {% for band in bands %}
-    <li><a href="{% url 'band-detail' band.id %}">{{band.name}}</a></li>
+    <div class="grid-item"><a href="{% url 'band-detail' band.id %}">{{band.name}}</a></div>
     {% endfor %}
-</ul>
+</div>
 
 {% endblock  %}
