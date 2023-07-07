@@ -10,6 +10,10 @@ from django.core.mail import send_mail
 from django.contrib import messages
 
 
+def index(request):
+    return render(request, 'listings/index.html')
+
+
 def band_list(request):
     bands = Band.objects.all()
     return render(request, 'listings/band_list.html', context={'bands': bands})
