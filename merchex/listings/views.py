@@ -83,7 +83,7 @@ def band_delete(request, band_id):
 
 
 def about(request):
-    author = "Nathan Lufuluabo"
+    author = "quelqu'un qui aime faire des blagues"
     return render(request, 'listings/about.html', context={'author': author})
 
 
