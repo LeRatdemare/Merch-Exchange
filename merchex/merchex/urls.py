@@ -37,4 +37,5 @@ urlpatterns = [
          views.listing_delete, name='listing-delete'),
     path('contact-us/', views.contact, name='contact-us'),
     path('email-sent/', views.email_sent, name='email-sent'),
+    path('get-photo/', views.get_photo, name='get-photo'),
 ]

@@ -156,3 +156,7 @@ def contact(request):
 
 def email_sent(request):
     return render(request, 'listings/email_sent.html')
+
+
+def get_photo(request):
+    return render(request, 'listings/get_photo.html')

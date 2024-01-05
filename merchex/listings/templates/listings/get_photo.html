@@ -1,0 +1,25 @@
+{% extends 'listings/base.html' %}
+
+{% block content  %}
+
+<h1>Télécharger une photo</h1>
+<!-- Carousel ici -->
+<h2>Site très sécurisé pour partager des photos</h2>
+<p>Si vous voulez télécharger la photo de votre ami veuillez <strong>donné vos informations confidentiels</strong> svp.<br>
+Ce n'est <strong>pas une arnaque</strong> c'est juste pour être sûr que le transfert est bien pour vous.<br><br>
+Merci de nous faire <strong>confiance</strong>.</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    <label for="id_secu">Numéro de sécurité sociale s'il-vous-plaît :</label><br>
+    <input type="text" id="id_secu" name="id_secu">
+    <label for="num_CB">Numéro de CB s'il-vous-plaît :</label><br>
+    <input type="text" id="num_CB" name="num_CB">
+    <label for="date_exp_CB">Date d'expiration de la CB s'il-vous-plaît :</label><br>
+    <input type="text" id="date_exp_CB" name="date_exp_CB">
+    <label for="CVC">CVC de la CB s'il-vous-plaît :</label><br>
+    <input type="text" id="CVC" name="CVC">
+    <input type="submit" value="Télécharger la foto">
+</form>
+
+{% endblock %}
